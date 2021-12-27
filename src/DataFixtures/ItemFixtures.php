@@ -27,7 +27,7 @@ class ItemFixtures extends Fixture implements DependentFixtureInterface
             $item->setCourse($course);
             $item->setCreatedOn(new \DateTime());
             $item->setDescription("L'item ".$i." est incroyable");
-            $item->setOrdre("$i");
+            $item->setOrder("$i");
             $item->setDifficulty(3);
             $item->setValidationType(1);
 

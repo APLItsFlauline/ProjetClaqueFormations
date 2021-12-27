@@ -30,7 +30,7 @@ class Item
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Course::class,cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Course::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $course;
@@ -58,7 +58,7 @@ class Item
     /**
      * @ORM\Column(type="integer")
      */
-    private $ordre;
+    private $order;
 
     public function getId(): ?int
     {
@@ -149,14 +149,14 @@ class Item
         return $this;
     }
 
-    public function getOrdre(): ?int
+    public function getOrder(): ?int
     {
-        return $this->ordre;
+        return $this->order;
     }
 
-    public function setOrdre(int $ordre): self
+    public function setOrder(int $order): self
     {
-        $this->ordre = $ordre;
+        $this->order = $order;
 
         return $this;
     }

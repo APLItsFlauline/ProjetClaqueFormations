@@ -22,7 +22,7 @@ class Course
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class,cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=User::class, cascade={"persist"})
      */
     private $createdBy;
 

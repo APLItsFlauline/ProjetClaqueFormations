@@ -161,12 +161,12 @@ class Item
         return $this;
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addConstraint(new UniqueEntity([
-            'fields' => 'order',
-        ]));
+    //public static function loadValidatorMetadata(ClassMetadata $metadata)
+    //{
+        //$metadata->addConstraint(new UniqueEntity([
+        //    'fields' => 'order',
+        //]));
 
-       $metadata->addPropertyConstraint('order', new Assert\order);
-    }
+       //$metadata->addPropertyConstraint('order', new Assert\order);
+    //}
 }

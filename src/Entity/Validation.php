@@ -127,12 +127,12 @@ class Validation
         return $this;
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addConstraint(new UniqueEntity([
-            'fields' => 'item',
-        ]));
+    //public static function loadValidatorMetadata(ClassMetadata $metadata)
+    //{
+        //$metadata->addConstraint(new UniqueEntity([
+            //'fields' => 'item',
+        //]));
 
-        $metadata->addPropertyConstraint('item', new Assert\item());
-    }
+        //$metadata->addPropertyConstraint('item', new Assert\item());
+    //}
 }

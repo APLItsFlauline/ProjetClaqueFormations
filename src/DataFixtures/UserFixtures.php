@@ -9,11 +9,6 @@ use App\Entity\User;
 
 class UserFixtures extends Fixture
 {
-    public static function getReferenceKeyUser($i): string
-    {
-        return sprintf("ReferenceUser %f", $i);
-    }
-
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create('fr_FR');
@@ -31,9 +26,6 @@ class UserFixtures extends Fixture
             $user->setIsTeacher($faker->boolean());
 
             $manager->persist($user);
-
-            $this->setReference(self::getReferenceKeyUser($i), $user);
-
         }
 
         $manager->flush();

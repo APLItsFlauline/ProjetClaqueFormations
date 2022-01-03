@@ -8,6 +8,8 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Validation;
+use App\Entity\Item;
+use App\Entity\User;
 
 class ValidationFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -15,14 +17,20 @@ class ValidationFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = \Faker\Factory::create('fr_FR');
 
-        for($i=1; $i<=10;$i++){
+        $repoUser=$manager->getRepository(User::class);
+        $users=$repo->findAll();
 
-            $user = $this->getReference(UserFixtures::getReferenceKeyUser($i));
-            $item = $this->getReference(ItemFixtures::getReferenceKeyItem($i));
+        $repoItem=$manager->getRepository(Item::class);
+        $items=$repo->findAll();
+
+        $nb=max(count($items),count($users));
+
+
+        for($i=1; $i<=$nb;$i++){
 
             $validation = new Validation();
-            $validation->setAuthor($user);
-            $validation->setItem($item);
+            $validation->setAuthor($users[$i]);
+            $validation->setItem($items[$i]);
             $validation->setFeedback($faker->paragraphs());
             $validation->setPayload($faker->text());
             $validation->setValid($faker->boolean());

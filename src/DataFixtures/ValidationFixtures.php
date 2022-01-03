@@ -26,7 +26,7 @@ class ValidationFixtures extends Fixture implements DependentFixtureInterface
         $nb=max(count($items),count($users));
 
 
-        for($i=1; $i<=$nb;$i++){
+        for($i=1; $i<$nb;$i++){
 
             $validation = new Validation();
             $validation->setAuthor($users[$i]);

@@ -21,14 +21,14 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
         $users=$repo->findAll();
         $nbUsers=count($users);
 
-        for($i = 1; $i <= $nbUsers; $i++){
+        for($i = 1; $i < $nbUsers; $i++){
 
             $course = new Course();
             $course->setCreatedBy($users[$i]);
             $course->setActive($faker->boolean());
             $course->setName($faker->sentence());
             $course->setOpen($faker->boolean());
-            for($j=1; $j<=$i;$j++){
+            for($j=1; $j<$i;$j++){
                 $course->addPerson($users[$j]);
             }
 

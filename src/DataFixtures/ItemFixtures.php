@@ -21,7 +21,7 @@ class ItemFixtures extends Fixture implements DependentFixtureInterface
         $courses=$repo->findAll();
         $nbCourses=count($courses);
 
-        for($i=1; $i<=$nbCourses; $i++){
+        for($i=1; $i<$nbCourses; $i++){
 
             $item = new Item();
             $item->setName($faker->sentence());
@@ -29,7 +29,7 @@ class ItemFixtures extends Fixture implements DependentFixtureInterface
             $item->setCourse($courses[$i]);
             $item->setCreatedOn($faker->dateTimeThisYear());
             $item->setDescription($faker->text());
-            $item->setOrdre($faker->numberBetween(0,20));
+            $item->setOrder($faker->numberBetween(0,20));
             $item->setDifficulty($faker->randomDigit);
             $item->setValidationType($faker->randomDigit);
 

@@ -24,7 +24,7 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
             $course = new Course();
             $course->setCreatedBy($this->getReference(UserFixtures :: getReferenceKeyUser($i)));
             $course->setActive(0);
-            $course->setName("Course n°".$i);
+            $course->setName("Forma n°".$i);
             $course->setOpen(1);
             for($j=1; $j<=$i;$j++){
                 $course->addPerson($this->getReference(UserFixtures :: getReferenceKeyUser($j)));

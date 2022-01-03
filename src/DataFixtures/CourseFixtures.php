@@ -19,13 +19,15 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
+        $faker = \Faker\Factory::create('fr_FR');
+
         for($i = 1; $i <= 10; $i++){
 
             $course = new Course();
             $course->setCreatedBy($this->getReference(UserFixtures :: getReferenceKeyUser($i)));
-            $course->setActive(0);
-            $course->setName("Forma n°".$i);
-            $course->setOpen(1);
+            $course->setActive($faker->boolean());
+            $course->setName($faker->sentence());
+            $course->setOpen($faker->boolean());
             for($j=1; $j<=$i;$j++){
                 $course->addPerson($this->getReference(UserFixtures :: getReferenceKeyUser($j)));
             }

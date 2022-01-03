@@ -13,6 +13,8 @@ class ValidationFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
+        $faker = \Faker\Factory::create('fr_FR');
+
         for($i=1; $i<=10;$i++){
 
             $user = $this->getReference(UserFixtures::getReferenceKeyUser($i));
@@ -21,10 +23,10 @@ class ValidationFixtures extends Fixture implements DependentFixtureInterface
             $validation = new Validation();
             $validation->setAuthor($user);
             $validation->setItem($item);
-            $validation->setFeedback("Le GP est insane, surtout la séance n°".$i);
-            $validation->setPayload("CODE");
-            $validation->setValid(0);
-            $validation->setValidatedOn(new \DateTime());
+            $validation->setFeedback($faker->paragraphs());
+            $validation->setPayload($faker->text());
+            $validation->setValid($faker->boolean());
+            $validation->setValidatedOn($faker->dateTimeThisYear());
 
             $manager->persist($validation);
 

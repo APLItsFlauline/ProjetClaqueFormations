@@ -21,7 +21,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .createSharedEntry('vendor', './assets/js/vendor.js')
+    .addEntry('vendor', './assets/js/vendor.js')
     //.splitEntryChunks()
 
 

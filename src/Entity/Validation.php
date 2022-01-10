@@ -21,7 +21,7 @@ class Validation
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="validations", unique=true, cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="validations", cascade={"persist"})
      */
     private $author;
 

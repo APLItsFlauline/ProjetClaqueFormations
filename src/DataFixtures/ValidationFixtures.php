@@ -18,12 +18,12 @@ class ValidationFixtures extends Fixture implements DependentFixtureInterface
         $faker = \Faker\Factory::create('fr_FR');
 
         $repoUser=$manager->getRepository(User::class);
-        $users=$repo->findAll();
+        $users=$repoUser->findAll();
 
         $repoItem=$manager->getRepository(Item::class);
-        $items=$repo->findAll();
+        $items=$repoItem->findAll();
 
-        $nb=max(count($items),count($users));
+        $nb=min(count($items),count($users));
 
 
         for($i=1; $i<$nb;$i++){
@@ -31,7 +31,7 @@ class ValidationFixtures extends Fixture implements DependentFixtureInterface
             $validation = new Validation();
             $validation->setAuthor($users[$i]);
             $validation->setItem($items[$i]);
-            $validation->setFeedback($faker->paragraphs());
+            $validation->setFeedback($faker->text());
             $validation->setPayload($faker->text());
             $validation->setValid($faker->boolean());
             $validation->setValidatedOn($faker->dateTimeThisYear());

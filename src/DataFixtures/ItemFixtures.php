@@ -29,7 +29,7 @@ class ItemFixtures extends Fixture implements DependentFixtureInterface
             $item->setCourse($courses[$i]);
             $item->setCreatedOn($faker->dateTimeThisYear());
             $item->setDescription($faker->text());
-            $item->setOrder($faker->numberBetween(0,20));
+            $item->setIOrder($faker->randomDigit);
             $item->setDifficulty($faker->randomDigit);
             $item->setValidationType($faker->randomDigit);
 

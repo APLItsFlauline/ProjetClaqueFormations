@@ -56,9 +56,9 @@ class Item
     private $difficulty;
 
     /**
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(type="integer")
      */
-    private $order;
+    private $iOrder;
 
     public function getId(): ?int
     {
@@ -149,14 +149,14 @@ class Item
         return $this;
     }
 
-    public function getOrder(): ?int
+    public function getIOrder(): ?int
     {
-        return $this->order;
+        return $this->iOrder;
     }
 
-    public function setOrder(int $order): self
+    public function setIOrder(int $iOrder): self
     {
-        $this->order = $order;
+        $this->iOrder = $iOrder;
 
         return $this;
     }

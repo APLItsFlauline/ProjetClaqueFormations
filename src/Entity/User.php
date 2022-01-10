@@ -207,20 +207,20 @@ class User
     }
 
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addConstraint(new UniqueEntity([
-            'fields' => 'username',
-        ]));
+    //public static function loadValidatorMetadata(ClassMetadata $metadata)
+    //{
+        //$metadata->addConstraint(new UniqueEntity([
+            //'fields' => 'username',
+        //]));
 
-        $metadata->addPropertyConstraint('username', new Assert\username());
+        //$metadata->addPropertyConstraint('username', new Assert\username());
 
-        $metadata->addConstraint(new UniqueEntity([
-            'fields' => 'email',
-        ]));
+        //$metadata->addConstraint(new UniqueEntity([
+            //'fields' => 'email',
+        //]));
 
-        $metadata->addPropertyConstraint('email', new Assert\email());
-    }
+        //$metadata->addPropertyConstraint('email', new Assert\email());
+   //}
 
     /**
      * @return Collection|Course[]

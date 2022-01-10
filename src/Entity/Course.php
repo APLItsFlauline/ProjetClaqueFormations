@@ -105,14 +105,14 @@ class Course
         return $this;
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addConstraint(new UniqueEntity([
-            'fields' => 'name',
-        ]));
+    //public static function loadValidatorMetadata(ClassMetadata $metadata)
+    //{
+        //$metadata->addConstraint(new UniqueEntity([
+            //'fields' => 'name',
+        //]));
 
-        $metadata->addPropertyConstraint('name', new Assert\name());
-    }
+        //$metadata->addPropertyConstraint('name', new Assert\name());
+    //}
 
    /**
     * @return Collection|User[]

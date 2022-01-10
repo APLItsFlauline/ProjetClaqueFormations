@@ -30,7 +30,7 @@ class Item
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Course::class, cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Course::class,cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $course;
@@ -58,7 +58,7 @@ class Item
     /**
      * @ORM\Column(type="integer")
      */
-    private $order;
+    private $iOrder;
 
     public function getId(): ?int
     {
@@ -149,24 +149,24 @@ class Item
         return $this;
     }
 
-    public function getOrder(): ?int
+    public function getIOrder(): ?int
     {
-        return $this->order;
+        return $this->iOrder;
     }
 
-    public function setOrder(int $order): self
+    public function setIOrder(int $iOrder): self
     {
-        $this->order = $order;
+        $this->iOrder = $iOrder;
 
         return $this;
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addConstraint(new UniqueEntity([
-            'fields' => 'order',
-        ]));
+    //public static function loadValidatorMetadata(ClassMetadata $metadata)
+    //{
+        //$metadata->addConstraint(new UniqueEntity([
+        //    'fields' => 'order',
+        //]));
 
-       $metadata->addPropertyConstraint('order', new Assert\order);
-    }
+       //$metadata->addPropertyConstraint('order', new Assert\order);
+    //}
 }

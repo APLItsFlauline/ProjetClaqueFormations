@@ -8,23 +8,33 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Validation;
+use App\Entity\Item;
+use App\Entity\User;
 
 class ValidationFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        for($i=1; $i<=10;$i++){
+        $faker = \Faker\Factory::create('fr_FR');
 
-            $user = $this->getReference(UserFixtures::getReferenceKeyUser($i));
-            $item = $this->getReference(ItemFixtures::getReferenceKeyItem($i));
+        $repoUser=$manager->getRepository(User::class);
+        $users=$repoUser->findAll();
+
+        $repoItem=$manager->getRepository(Item::class);
+        $items=$repoItem->findAll();
+
+        $nb=min(count($items),count($users));
+
+
+        for($i=1; $i<$nb;$i++){
 
             $validation = new Validation();
-            $validation->setAuthor($user);
-            $validation->setItem($item);
-            $validation->setFeedback("Le GP est insane, surtout la séance n°".$i);
-            $validation->setPayload("CODE");
-            $validation->setValid(0);
-            $validation->setValidatedOn(new \DateTime());
+            $validation->setAuthor($users[$i]);
+            $validation->setItem($items[$i]);
+            $validation->setFeedback($faker->text());
+            $validation->setPayload($faker->text());
+            $validation->setValid($faker->boolean());
+            $validation->setValidatedOn($faker->dateTimeThisYear());
 
             $manager->persist($validation);
 

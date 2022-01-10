@@ -3,37 +3,37 @@
 namespace App\DataFixtures;
 
 use App\DataFixtures\CourseFixtures;
+use App\Entity\Course;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Item;
 
+
+
 class ItemFixtures extends Fixture implements DependentFixtureInterface
 {
-    public static function getReferenceKeyItem($i): string
-    {
-        return sprintf("ReferenceItem %", $i);
-    }
-
     public function load(ObjectManager $manager): void
     {
-        for($i=1; $i<=10; $i++){
+        $faker = \Faker\Factory::create('fr_FR');
 
-            $course = $this->getReference(CourseFixtures :: getReferenceKeyCourse($i));
+        $repo=$manager->getRepository(Course::class);
+        $courses=$repo->findAll();
+        $nbCourses=count($courses);
+
+        for($i=1; $i<$nbCourses; $i++){
 
             $item = new Item();
-            $item->setName("Item n°".$i);
-            $item->setChapter("Chapitre n°".$i);
-            $item->setCourse($course);
-            $item->setCreatedOn(new \DateTime());
-            $item->setDescription("L'item ".$i." est incroyable");
-            $item->setOrder("$i");
-            $item->setDifficulty(3);
-            $item->setValidationType(1);
+            $item->setName($faker->sentence());
+            $item->setChapter($faker->sentence());
+            $item->setCourse($courses[$i]);
+            $item->setCreatedOn($faker->dateTimeThisYear());
+            $item->setDescription($faker->text());
+            $item->setIOrder($faker->randomDigit);
+            $item->setDifficulty($faker->randomDigit);
+            $item->setValidationType($faker->randomDigit);
 
             $manager->persist($item);
-
-            $this->setReference(self::getReferenceKeyItem($i), $item);
         }
 
         $manager->flush();

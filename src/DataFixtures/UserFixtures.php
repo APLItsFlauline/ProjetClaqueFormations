@@ -16,13 +16,24 @@ class UserFixtures extends Fixture
 
         for ($i = 1; $i <= 10; $i++) {
 
+            $firstName=$faker->firstName();
+            $lastName=$faker->lastName;
+            $year=$faker->year();
+
+            if ($year<=2022) {
+                $mail = 'marseille';
+            }
+            else {
+                $mail = 'mediterranee';
+            }
+
             $user = new User();
-            $user->setUsername($faker->name());
-            $user->setEmail($faker->email);
+            $user->setUsername($firstName[0].$lastName);
+            $user->setEmail($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr'); // Je fais en prévision de Centrale Mediterranee
             $user->setPassword($faker->password());
             $user->setFirstName($faker->firstName());
             $user->setLastName($faker->lastName);
-            $user->setPromo($faker->year());
+            $user->setPromo($year);
             $user->setRoles([]);
             $user->setIsTeacher($faker->boolean());
 

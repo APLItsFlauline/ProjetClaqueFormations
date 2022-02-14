@@ -67,6 +67,8 @@ class User
      */
     private $courses;
 
+    public $confirm_password;
+
     public function __construct()
     {
         $this->validations = new ArrayCollection();

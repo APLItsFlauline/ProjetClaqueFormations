@@ -34,6 +34,7 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Length(min="8", minMessage="Votre Mot de Passe doit faire au minimum 8 caractères")
      */
     private $password;
 
@@ -66,6 +67,10 @@ class User
      * @ORM\ManyToMany(targetEntity=Course::class, mappedBy="people")
      */
     private $courses;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même Mot de Passe")
+     */
 
     public $confirm_password;
 

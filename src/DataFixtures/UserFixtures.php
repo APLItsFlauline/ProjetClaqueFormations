@@ -8,9 +8,18 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 use App\Entity\User;
 use phpDocumentor\Reflection\Types\String_;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 
 class UserFixtures extends Fixture
 {
+    private UserPasswordHasherInterface $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher)
+    {
+        $this->hasher = $hasher;
+    }
+
     public function retireAccents($name)
     {
         $search  = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ð', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ');
@@ -47,10 +56,11 @@ class UserFixtures extends Fixture
             }
 
             $user = new User();
+            $password = $this->hasher->hashPassword($user, $faker->password);
             echo $firstName.$lastName;
             $user->setUsername((strtolower($firstName[0].$lastName)));
             $user->setEmail(strtolower($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr')); // Je fais en prévision de Centrale Mediterranee
-            $user->setPassword($faker->password());
+            $user->setPassword($password);
             $user->setFirstName($firstName);
             $user->setLastName($lastName);
             $user->setPromo($year);

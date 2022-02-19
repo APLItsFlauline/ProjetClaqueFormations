@@ -64,7 +64,7 @@ class UserFixtures extends Fixture
             $user->setFirstName($firstName);
             $user->setLastName($lastName);
             $user->setPromo($year);
-            $user->setRoles([]);
+            $user->setRoles(['ROLE_USER']);
             $user->setIsTeacher($faker->boolean());
 
             $manager->persist($user);

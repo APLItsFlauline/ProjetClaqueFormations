@@ -25,6 +25,10 @@ security:
                 path: security_logout
                 target: /forma
 
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -36,3 +40,5 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+

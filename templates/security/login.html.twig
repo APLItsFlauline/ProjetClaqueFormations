@@ -8,7 +8,7 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('security_login') }}" method="'post">
+    <form action="{{ path('security_login') }}" method="post">
         <div class="form-group">
             <label for="username"> Adresse Email :</label>
             <input placeholder="Adresse email ..." type="text" required name="_username" class="form-control">

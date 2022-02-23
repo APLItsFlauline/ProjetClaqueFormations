@@ -61,6 +61,8 @@ class UserFixtures extends Fixture
             $user->setUsername((strtolower($this->convertSpace($this->retireAccents($firstName[0].$lastName)))));
             $user->setEmail(strtolower($this->convertSpace($this->retireAccents($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr')))); // Je fais en prévision de Centrale Mediterranee
             $user->setPassword($password);
+            $user->setFirstName($firstName);
+            $user->setLastName($lastName);
             $user->setPromo($year);
             $user->setRoles(['ROLE_USER']);
             $user->setIsTeacher($faker->boolean());

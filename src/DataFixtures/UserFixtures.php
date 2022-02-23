@@ -44,8 +44,8 @@ class UserFixtures extends Fixture
 
         for ($i = 1; $i <= 50; $i++) {
 
-            $firstName=$this->convertSpace($this->retireAccents($faker->firstName()));
-            $lastName=$this->convertSpace($this->retireAccents($faker->lastName));
+            $firstName=$faker->firstName;
+            $lastName=$faker->lastName;
             $year=$faker->year();
 
             if ($year<=2022) {
@@ -58,11 +58,9 @@ class UserFixtures extends Fixture
             $user = new User();
             $password = $this->hasher->encodePassword($user, $faker->password);
             echo $firstName.$lastName;
-            $user->setUsername((strtolower($firstName[0].$lastName)));
-            $user->setEmail(strtolower($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr')); // Je fais en prévision de Centrale Mediterranee
+            $user->setUsername((strtolower($this->convertSpace($this->retireAccents($firstName[0].$lastName)))));
+            $user->setEmail(strtolower($this->convertSpace($this->retireAccents($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr')))); // Je fais en prévision de Centrale Mediterranee
             $user->setPassword($password);
-            $user->setFirstName($firstName);
-            $user->setLastName($lastName);
             $user->setPromo($year);
             $user->setRoles(['ROLE_USER']);
             $user->setIsTeacher($faker->boolean());

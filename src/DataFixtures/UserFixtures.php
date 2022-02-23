@@ -8,14 +8,14 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 use App\Entity\User;
 use phpDocumentor\Reflection\Types\String_;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class UserFixtures extends Fixture
 {
-    private UserPasswordHasherInterface $hasher;
+    private UserPasswordEncoderInterface $hasher;
 
-    public function __construct(UserPasswordHasherInterface $hasher)
+    public function __construct(UserPasswordEncoderInterface $hasher)
     {
         $this->hasher = $hasher;
     }
@@ -56,7 +56,7 @@ class UserFixtures extends Fixture
             }
 
             $user = new User();
-            $password = $this->hasher->hashPassword($user, $faker->password);
+            $password = $this->hasher->encodePassword($user, $faker->password);
             echo $firstName.$lastName;
             $user->setUsername((strtolower($firstName[0].$lastName)));
             $user->setEmail(strtolower($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr')); // Je fais en prévision de Centrale Mediterranee

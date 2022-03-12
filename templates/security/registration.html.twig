@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {% block content %}
-    <h1> Inscriptions aux Formations </h1>
+    <h1> Inscription aux Formations </h1>
 
     {{ form_start(form) }}
-
-    {{ form_row(form.username, {'label': "Nom d'utilisateur :", 'attr':
-        {'placeholder': "Nom d'utilisateur ..."}}) }}
 
     <button type="submit" class="btn btn-success"> Inscription </button>
 
     {{ form_end(form) }}
+
 {% endblock %}

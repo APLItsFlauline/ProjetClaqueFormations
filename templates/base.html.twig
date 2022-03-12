@@ -108,6 +108,17 @@
 
 {% block page_js %}
 {% endblock %}
+
+<div id="app-notifs">
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="notif" data-type="{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
 </body>
 
 </html>

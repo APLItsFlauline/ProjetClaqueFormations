@@ -5,7 +5,8 @@
 
     {{ form_start(form) }}
 
-    {{ form_widget(form) }}
+    {{ form_row(form.username, {'label': "Nom d'utilisateur :", 'attr':
+        {'placeholder': "Nom d'utilisateur ..."}}) }}
 
     <button type="submit" class="btn btn-success"> Inscription </button>
 

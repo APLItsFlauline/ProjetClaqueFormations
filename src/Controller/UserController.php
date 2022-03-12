@@ -14,10 +14,13 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Doctrine\Common\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 class UserController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/login", name="user_login")
      */
     public function index(Request $request, TokenStorageInterface $tokenStorage, SessionInterface $session, EventDispatcherInterface $dispatcher, EntityManagerInterface $manager)
@@ -76,7 +79,7 @@ class UserController extends AbstractController
             }
 
             // Redirection vers l'accueil
-            return $this->redirectToRoute('default');
+            return $this->redirectToRoute('home');
         }
 
     }

@@ -15,9 +15,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin")
      * Require ROLE_ADMIN for only this controller method.
      * @IsGranted("ROLE_ADMIN")
+     * @Route("/admin", name="admin")
      */
     public function index(): Response
     {

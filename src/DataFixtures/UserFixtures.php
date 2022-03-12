@@ -49,6 +49,7 @@ class UserFixtures extends Fixture
             $year=$faker->year();
             $teacher=$faker->boolean;
 
+
             if ($year<=2022) {
                 $mail = 'marseille';
             }
@@ -66,10 +67,15 @@ class UserFixtures extends Fixture
             $user->setLastName($lastName);
             $user->setPromo($year);
             if($teacher) {
-                $user->setRoles(['ROLE_USER', 'ROLE_TEACHER']);}
-            else {
-                $user->setRoles(['ROLE_USER']);
+                if ($faker->boolean) {
+                    $user->setRoles(['ROLE_ADMIN']);}
+                else {
+                    $user->setRoles(['ROLE_TEACHER']);}
             }
+            else{
+                $user->setRoles((['ROLE_USER']));
+            }
+
             $user->setIsTeacher($teacher);
 
             $manager->persist($user);

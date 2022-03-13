@@ -59,12 +59,15 @@ class UserFixtures extends Fixture
 
             $user = new User();
             $password = $this->hasher->encodePassword($user, $faker->password);
-            echo $firstName.$lastName;
-            $user->setUsername((strtolower($this->convertSpace($this->retireAccents($firstName[0].$lastName)))));
-            $user->setEmail(strtolower($this->convertSpace($this->retireAccents($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr')))); // Je fais en prévision de Centrale Mediterranee
-            $user->setPassword($password);
             $user->setFirstName($firstName);
             $user->setLastName($lastName);
+            echo $firstName.$lastName;
+            $firstName=(strtolower($this->convertSpace($this->retireAccents($firstName))));
+            $lastName=(strtolower($this->convertSpace($this->retireAccents($lastName))));
+            $user->setUsername($firstName[0].$lastName);
+            $user->setEmail($firstName.'.'.$lastName.'@centrale-'.$mail.'.fr'); // Je fais en prévision de Centrale Mediterranee
+            $user->setPassword($password);
+
             $user->setPromo($year);
             if($teacher) {
                 if ($faker->boolean) {

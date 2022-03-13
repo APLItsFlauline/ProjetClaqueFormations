@@ -22,10 +22,12 @@ class FormaController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/", name="home")
      */
 
     public function home() {
+
         return $this->render('forma/home.html.twig');
     }
 

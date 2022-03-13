@@ -20,6 +20,11 @@ class SecurityController extends AbstractController
      * @Route("/inscription", name="security_registration")
      */
     public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder) {
+
+        if($this->isGranted('ROLE_USER')){
+            return $this->redirectToRoute('home');
+        }
+
         $user= new User();
 
         $form=$this->createForm(RegistrationType::class, $user);
@@ -40,6 +45,11 @@ class SecurityController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Vous vous êtes bien inscrit!'
+            );
+
             return $this->redirectToRoute('security_login');
         }
 
@@ -53,6 +63,10 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response{
 
+        if($this->isGranted('ROLE_USER')){
+            return $this->redirectToRoute('home');
+        }
+
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
@@ -62,5 +76,10 @@ class SecurityController extends AbstractController
     /**
      * @Route("/deconnexion",name="security_logout")
      */
-    public function logout() {}
+    public function logout() {
+        $this->addFlash(
+            'notice',
+            'Vous vous êtes bien déconnecté!'
+        );
+    }
 }

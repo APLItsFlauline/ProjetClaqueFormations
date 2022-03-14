@@ -3,6 +3,10 @@ body {
     background-color: lightgray;
 }
 
+.content {
+    margin-left: -20px; /*Histoire qu'il y ait un peu d'espace mais vous pouvez régler comme vous voulez*/
+}
+
 #app-notifs{
     display: none;
 }

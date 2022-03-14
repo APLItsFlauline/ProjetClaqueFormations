@@ -46,7 +46,7 @@ class SecurityController extends AbstractController
             $manager->flush();
 
             $this->addFlash(
-                'notice',
+                'success',
                 'Vous vous êtes bien inscrit!'
             );
 
@@ -74,11 +74,12 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/deconnexion",name="security_logout")
      */
     public function logout() {
         $this->addFlash(
-            'notice',
+            'success',
             'Vous vous êtes bien déconnecté!'
         );
     }

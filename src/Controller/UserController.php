@@ -20,7 +20,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class UserController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/login", name="user_login")
      */
     public function index(Request $request, TokenStorageInterface $tokenStorage, SessionInterface $session, EventDispatcherInterface $dispatcher, EntityManagerInterface $manager)
@@ -61,6 +60,7 @@ class UserController extends AbstractController
                     $user->setEmail($data['email']);
                     $user->setLastName($data['nom']);
                     $user->setFirstName($data['prenom']);
+                    $user->setRoles(['ROLE_USER']);
 
 
                     $manager->persist($user);

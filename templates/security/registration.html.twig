@@ -6,6 +6,16 @@
 
     {{ form_start(form) }}
 
+    {{ form_row(form.username, {'label' : "Nom d'Utilisateur"}) }}
+    {{ form_row(form.email, {'label' : "Adresse Email"}) }}
+    {{ form_row(form.confirm_email, {'label' : "Confirmer l'Adresse Email *"}) }}
+    {{ form_row(form.password, {'label' : "Mot de Passe"}) }}
+    {{ form_row(form.confirm_password, {'label' : "Confirmer le Mot de Passe"}) }}
+    {{ form_row(form.firstName, {'label' : "Prénom"}) }}
+    {{ form_row(form.lastName, {'label' : "Nom"}) }}
+    {{ form_row(form.promo, {'label' : "Promo Entrante"}) }}
+    {{ form_row(form.isTeacher, {'label' : "Êtes-vous formateur ?"}) }}
+
     <button type="submit" class="btn btn-success"> Inscription </button>
 
     {{ form_end(form) }}

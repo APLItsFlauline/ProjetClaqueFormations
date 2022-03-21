@@ -9,11 +9,9 @@
             text-align: center;
             font-size: 50px;
         }
-        .btn{
+        .boutons{
             margin-left: 200px;
-        }
-        .btn-success{
-            font-size: 2px;
+            padding: 10px 40px
         }
     </style>
 
@@ -44,16 +42,6 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     {{ form_row(form.email, {'label' : "Adresse Email"}) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form_row_title">
-                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                <label for="form_row_title">Confirmer l'Adresse Email</label>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    {{ form_row(form.confirm_email, {'label' : "Confirmer l'Adresse Email *"}) }}
                                 </div>
                             </div>
                         </div>
@@ -107,7 +95,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form_row_title">
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                 <label for="form_row_title">Êtes-vous Formateur ?</label>
@@ -115,9 +102,8 @@
                             <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                 <label for="isTeacher">{{form_row(form.isTeacher, {'label': " "})}}</label>
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-success"> Inscription </button>
                     </form>
+                    <button type="submit" class="btn btn-success inscrit boutons"> Inscription </button>
                 </div>
             </div>
         </div>

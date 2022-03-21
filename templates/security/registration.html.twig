@@ -2,21 +2,114 @@
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {% block content %}
-    <h1> Inscription aux Formations </h1>
 
     {{ form_start(form) }}
 
-    {{ form_row(form.username, {'label' : "Nom d'Utilisateur"}) }}
-    {{ form_row(form.email, {'label' : "Adresse Email"}) }}
-    {{ form_row(form.confirm_email, {'label' : "Confirmer l'Adresse Email *"}) }}
-    {{ form_row(form.password, {'label' : "Mot de Passe"}) }}
-    {{ form_row(form.confirm_password, {'label' : "Confirmer le Mot de Passe"}) }}
-    {{ form_row(form.firstName, {'label' : "Prénom"}) }}
-    {{ form_row(form.lastName, {'label' : "Nom"}) }}
-    {{ form_row(form.promo, {'label' : "Promo Entrante"}) }}
-    {{ form_row(form.isTeacher, {'label' : "Êtes-vous formateur ?"}) }}
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        Inscription aux Formations
+                    </h2>
+                </div>
+                <div class="body">
+                    <form class="form-horizontal">
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Nom d'Utilisateur</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.username, {'label' : "Nom d'Utilisateur"}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Adresse Email</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.email, {'label' : "Adresse Email"}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Confirmer l'Adresse Email</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.confirm_email, {'label' : "Confirmer l'Adresse Email *"}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Mot de Passe</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.password, {'label' : "Mot de Passe"}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Confirmer le Mot de Passe</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.confirm_password, {'label' : "Confirmer le Mot de Passe"}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Prénom</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.firstName, {'label' : "Prénom"}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Nom</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.lastName, {'label' : "Nom"}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Promotion Entrante</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    {{ form_row(form.promo, {'label' : "Promo Entrante"}) }}
+                                </div>
+                            </div>
+                        </div>
 
-    <button type="submit" class="btn btn-success"> Inscription </button>
+                        <div class="form_row_title">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label for="form_row_title">Êtes-vous Formateur ?</label>
+                            </div>
+                            <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                <label for="isTeacher">{{form_row(form.isTeacher, {'label': " "})}}</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success"> Inscription </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {{ form_end(form) }}
 

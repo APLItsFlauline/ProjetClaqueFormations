@@ -2,7 +2,21 @@
 
 {% block content %}
 
-    <h1> Connexion </h1>
+    <style>
+        .header{
+            text-align: center;
+            font-size: 50px;
+        }
+        .connexion{
+            margin-left: 200px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .supplement{
+            margin-left: 40px;
+            padding: 15px;
+        }
+    </style>
 
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -12,9 +26,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2>
-                        Connexion
-                    </h2>
+                    Connexion
                 </div>
                 <div class="body">
                     <form class="form-horizontal" action="{{ path('security_login') }}" method="post">
@@ -24,7 +36,9 @@
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
+                                    <div class="form-line">
                                     <input placeholder="Adresse email ..." type="text" required name="_username" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -34,20 +48,28 @@
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
+                                    <div class="form-line">
                                     <input placeholder="Mot de Passe ..." type="password" required name="_password" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success"> Connexion </button>
+                            <button type="submit" class="btn btn-success connexion"> Connexion </button>
                         </div>
                     </form>
+                    <div class="button supplement" >
+                        <a href="/login">
+                            <button class="btn bg-indigo waves-effect supplement"> Connexion via MyCentraleAsso </button>
+                        </a>
+                    </div>
+                    <div class="button supplement">
+                        <a href="/inscription">
+                            <button class="btn btn-success waves-effect supplement"> Inscription </button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="button">
-            <button type="button" class= href="/login"> Connexion via MyCentraleAsso </button>
-            <button type="button" href="/inscription"> S'inscrire </button>
         </div>
     </div>
 

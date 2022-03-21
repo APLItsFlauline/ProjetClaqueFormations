@@ -75,12 +75,6 @@ class User implements UserInterface
     private $courses;
 
     /**
-     * @Assert\EqualTo(propertyPath="email", message="Vous n'avez pas tapé le même email")
-     */
-
-    public $confirm_email;
-
-    /**
      * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même Mot de Passe")
      */
 

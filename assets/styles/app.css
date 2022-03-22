@@ -4,8 +4,12 @@
     background-color: lightgray;
 }
 
+.body-form{
+    background-color: white;
+}
+
 .content {
-    margin-left: 20px; /*Histoire qu'il y ait un peu d'espace mais vous pouvez régler comme vous voulez*/
+    margin-left: 10px; /*Histoire qu'il y ait un peu d'espace mais vous pouvez régler comme vous voulez*/
 }
 
 .header{
@@ -20,7 +24,7 @@
 }
 
 .boutons{
-    margin-left: 200px;
+    margin-left: 75px;
     padding: 10px 40px
 }
 

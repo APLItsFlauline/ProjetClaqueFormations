@@ -60,6 +60,8 @@ class UserController extends AbstractController
                     $user->setEmail($data['email']);
                     $user->setLastName($data['nom']);
                     $user->setFirstName($data['prenom']);
+                    $user->setIsTeacher(false);
+                    $user->setPromo($data['promo']);
                     $user->setRoles(['ROLE_USER']);
 
 
